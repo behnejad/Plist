@@ -14,6 +14,9 @@ namespace HB_SHR {
             std::vector < T > * l1;
             std::vector < void * > * l2;
 
+            int find(T);
+            int size;
+
         public:
             PList();
             //setter - has bug
@@ -28,6 +31,7 @@ namespace HB_SHR {
                 return 1;
             }
 
+            //---------------------------------------------
             PList<T>& operator = (char);
             PList<T>& operator = (const char *);
             PList<T>& operator = (char *);
@@ -39,6 +43,19 @@ namespace HB_SHR {
             PList<T>& operator = (bool);
             PList<T>& operator = (void *);
             PList<T>& operator = (std::string &);
+
+            bool set_item_at(unsigned int, void *);
+            bool set_item_at(unsigned int, char *);
+            bool set_item_at(unsigned int, const char *);
+            bool set_item_at(unsigned int, char);
+            bool set_item_at(unsigned int, short);
+            bool set_item_at(unsigned int, int);
+            bool set_item_at(unsigned int, long);
+            bool set_item_at(unsigned int, double);
+            bool set_item_at(unsigned int, float);
+            bool set_item_at(unsigned int, bool);
+            bool set_item_at(unsigned int, std::string &);
+            //---------------------------------------------
 
             void set(T, char);
             void set(T, const char *);
@@ -52,20 +69,8 @@ namespace HB_SHR {
             void set(T, void *);
             void set(T, std::string &);
 
-            bool set_item_at(unsigned int, void *);
-            bool set_item_at(unsigned int, char *);
-            bool set_item_at(unsigned int, const char *);
-            bool set_item_at(unsigned int, char);
-            bool set_item_at(unsigned int, short);
-            bool set_item_at(unsigned int, int);
-            bool set_item_at(unsigned int, long);
-            bool set_item_at(unsigned int, double);
-            bool set_item_at(unsigned int, float);
-            bool set_item_at(unsigned int, bool);
-            bool set_item_at(unsigned int, std::string &);
-
-            const char * get_const_char(T);
             char    get_char(T);
+            const char * get_const_char(T);
             char *  get_char_star(T);
             short   get_short(T);
             int     get_int(T);
@@ -78,7 +83,6 @@ namespace HB_SHR {
 
             unsigned int get_size();
             void clear();
-            int find(T);
 
             ~PList();
     };
