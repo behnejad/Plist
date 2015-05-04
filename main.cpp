@@ -2,7 +2,8 @@
 #include "plist.cpp"
 
 #include <iostream>
-#include <vector>
+#include <string>
+
 using namespace std;
 int main(){
 
@@ -12,6 +13,7 @@ int main(){
 //    std::cout << a << std::endl;
     myPList.set(1, 'e');
 	cout << myPList.get_char(1);
-    
+	myPList.set(3, string(" Hello World!\n"));
+	cout << myPList.get_string(3);
 	return 0;
 }
