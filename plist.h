@@ -1,6 +1,5 @@
 #include <vector>
 #include <iostream>
-#include <stdio.h>
 
 #ifndef _P_LIST_H_
 #define _P_LIST_H_
@@ -18,17 +17,6 @@ namespace HB_SHR {
         
     public:
         PList();
-        //setter - has bug
-        int& operator [] (T in){
-            std::cout << "setter" << std::endl;
-            int a = 90;
-            return a;
-        }
-        //getter - has bug
-        int operator [] (T in) const {
-            std::cout << "getter" << std::endl;
-            return 1;
-        }
         
         //---------------------------------------------
         PList<T>& operator = (char);
@@ -52,7 +40,6 @@ namespace HB_SHR {
         bool set_item_at(unsigned int, long);
         bool set_item_at(unsigned int, double);
         bool set_item_at(unsigned int, float);
-        bool set_item_at(unsigned int, bool);
         bool set_item_at(unsigned int, std::string &);
         //---------------------------------------------
         
@@ -67,9 +54,12 @@ namespace HB_SHR {
         void set(T, bool);
         void set(T, void *);
         void set(T, std::string &);
+		void set(T, unsigned char);
+		void set(T, unsigned short);
+		void set(T, unsigned int);
+		void set(T, unsigned long);
         
         char    get_char(T);
-        const char * get_const_char(T);
         char *  get_char_star(T);
         short   get_short(T);
         int     get_int(T);
@@ -78,11 +68,18 @@ namespace HB_SHR {
         float   get_float(T);
         bool    get_bool(T);
         void *  get_void(T);
+		const char *	get_const_char(T);
+		unsigned char   get_unsigned_char(T);
+		unsigned short  get_unsigned_short(T);
+		unsigned int	get_unsigned_int(T);
+		unsigned long   get_unsigned_long(T);
         std::string & get_string(T);
         
         unsigned int get_size();
         void clear();
-        
+		bool remove(T);
+		bool remove_at(unsigned int);
+
         ~PList();
     };
 }

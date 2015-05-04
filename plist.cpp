@@ -24,6 +24,7 @@ namespace HB_SHR {
     template <typename T>
     void PList<T>::clear()
     {
+		size = 0;
         l1->clear();
         for (int i = 0 ; i < l2->size(); ++i){
             delete l2[i];
@@ -205,7 +206,6 @@ namespace HB_SHR {
         }
     }
     //---------------- long ------------------
-    
     template <typename T>
     void PList<T>::set(T t, long c)
     {
@@ -225,7 +225,6 @@ namespace HB_SHR {
         }
     }
     
-    
     template <typename T>
     long PList<T>::get_long(T t)
     {
@@ -239,10 +238,7 @@ namespace HB_SHR {
             return *((long *)l2->at(index));
         }
     }
-    
-    
     //---------------- double ------------------
-    
     template <typename T>
     void PList<T>::set(T t, double c)
     {
@@ -275,10 +271,7 @@ namespace HB_SHR {
             return *((double *)l2->at(index));
         }
     }
-    
-    
     //---------------- float ------------------
-    
     template <typename T>
     void PList<T>::set(T t, float c)
     {
@@ -311,9 +304,7 @@ namespace HB_SHR {
             return *((float *)l2->at(index));
         }
     }
-    
     //---------------- bool ------------------
-    
     template <typename T>
     void PList<T>::set(T t, bool c)
     {
@@ -346,9 +337,7 @@ namespace HB_SHR {
             return *((bool *)l2->at(index));
         }
     }
-    
     //---------------- void * ------------------
-    
     template <typename T>
     void PList<T>::set(T t, void *c)
     {
@@ -366,7 +355,6 @@ namespace HB_SHR {
         }
     }
     
-    
     template <typename T>
     void * PList<T>::get_void(T t)
     {
@@ -380,10 +368,7 @@ namespace HB_SHR {
             return l2->at(index);
         }
     }
-    
-    
-    //---------------- std::string &  ------------------
-    
+    //---------------- string &  ------------------
     template <typename T>
     void PList<T>::set(T t, std::string & c)
     {
@@ -417,14 +402,139 @@ namespace HB_SHR {
             return *((std::string *)l2->at(index));
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+	//---------------- unsigned char ------------------
+	template <typename T>
+	void PList<T>::set(T t, unsigned char c)
+	{
+		int index = find(t);
+		unsigned char  * tmp = new unsigned char();
+		*tmp = c;
+		if (index == -1)
+		{
+			++size;
+			l1->push_back(t);
+			l2->push_back((void *)tmp);
+		}
+		else
+		{
+			delete l2->at(index);
+			l2->at(index) = (void *)tmp;
+		}
+	}
+
+	template <typename T>
+	unsigned char PList<T>::get_unsigned_char(T t)
+	{
+		int index = find(t);
+		if (index == -1)
+		{
+			return NULL;
+		}
+		else
+		{
+			return *((unsigned char *)l2->at(index));
+		}
+	}
+	//---------------- unsigned short ------------------
+	template <typename T>
+	void PList<T>::set(T t, unsigned short c)
+	{
+		int index = find(t);
+		unsigned short  * tmp = new unsigned short();
+		*tmp = c;
+		if (index == -1)
+		{
+			++size;
+			l1->push_back(t);
+			l2->push_back((void *)tmp);
+		}
+		else
+		{
+			delete l2->at(index);
+			l2->at(index) = (void *)tmp;
+		}
+	}
+
+	template <typename T>
+	unsigned short PList<T>::get_unsigned_short(T t)
+	{
+		int index = find(t);
+		if (index == -1)
+		{
+			return NULL;
+		}
+		else
+		{
+			return *((unsigned short *)l2->at(index));
+		}
+	}
+	//---------------- unsigned int ------------------
+	template <typename T>
+	void PList<T>::set(T t, unsigned int c)
+	{
+		int index = find(t);
+		unsigned int  * tmp = new unsigned int();
+		*tmp = c;
+		if (index == -1)
+		{
+			++size;
+			l1->push_back(t);
+			l2->push_back((void *)tmp);
+		}
+		else
+		{
+			delete l2->at(index);
+			l2->at(index) = (void *)tmp;
+		}
+	}
+
+	template <typename T>
+	unsigned int PList<T>::get_unsigned_int(T t)
+	{
+		int index = find(t);
+		if (index == -1)
+		{
+			return NULL;
+		}
+		else
+		{
+			return *((unsigned int *)l2->at(index));
+		}
+	}
+	//---------------- unsigned long ------------------
+	template <typename T>
+	void PList<T>::set(T t, unsigned long c)
+	{
+		int index = find(t);
+		unsigned long  * tmp = new unsigned long();
+		*tmp = c;
+		if (index == -1)
+		{
+			++size;
+			l1->push_back(t);
+			l2->push_back((void *)tmp);
+		}
+		else
+		{
+			delete l2->at(index);
+			l2->at(index) = (void *)tmp;
+		}
+	}
+
+	template <typename T>
+	unsigned long PList<T>::get_unsigned_long(T t)
+	{
+		int index = find(t);
+		if (index == -1)
+		{
+			return NULL;
+		}
+		else
+		{
+			return *((unsigned long *)l2->at(index));
+		}
+	}
+
+	//------------------------------------------------------
+	
 }
